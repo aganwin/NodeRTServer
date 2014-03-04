@@ -12,6 +12,14 @@ var app         = express.createServer();
 
 
 
+//Tell the server to listen for incoming connections
+app.listen( gameport );
+ 
+//Log something so we know that it succeeded.
+console.log('\t :: Express :: Listening on port ' + gameport );
+
+
+/*
 var server = dgram.createSocket('udp4');
 
 
@@ -28,4 +36,4 @@ server.on('message', function (message, remote) {
 
 });
 
-//server.bind(PORT, HOST);
+server.bind(PORT, HOST);*/
