@@ -1,31 +1,23 @@
-/*var PORT = 33333,
-	HOST = '127.0.0.1';*/
+var PORT = 33333,
+	HOST = '127.0.0.1';
 
-var gameport    = process.env.PORT || 4004;
 
 var dgram 		= require('dgram'),
-	io 			= require('socket.io'),
-	express 	= require('express'),
-	UUID 		= require('node-uuid');
-
-var app         = express.createServer();
+	client 		= require('socket.io').listen(8080).sockets,
+	UUID 		= require('node-uuid'),
+	express 	= require('express');
 
 
+var app 		= express();
 
-//Tell the server to listen for incoming connections
-app.listen( gameport );
- 
-//Log something so we know that it succeeded.
-console.log('\t :: Express :: Listening on port ' + gameport );
+
+const redis = require('redis');
+const client = redis.createClient();
+
+
 
 
 /*
-var server = dgram.createSocket('udp4');
-
-
-
-
-
 server.on('listening', function () {
     var address = server.address();
     console.log('UDP Server listening on ' + address.address + ":" + address.port);
